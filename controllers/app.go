@@ -11,16 +11,20 @@ type App struct {
 	Routes []string
 }
 
-func (a *App) Setting() {
-	a.Ctx.Template = "Application/Index"
-	a.Ctx.Data["title"] = "Sign in"
+func (a *App) Index() {
+	a.Ctx.Template = "index"
+	a.HTML(http.StatusOK)
+}
+
+func (a *App) SignIn() {
+	a.Ctx.Template = "signin"
 	a.HTML(http.StatusOK)
 }
 
 func NewApp() controller.Controller {
 	return &App{
 		Routes: []string{
-			"get;/;Setting",
+			"get;/;Index",
 		},
 	}
 }
